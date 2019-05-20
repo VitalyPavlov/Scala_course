@@ -74,7 +74,7 @@ object Simple extends App {
   // Reimplement the reduce function from lec1 home work with ad-hoc Polymorphism. 
   
   // Implement handwritten solutions
-  abstract class Addable[A] {
+  trait Addable[A] {
     def zero: A
     def add(a: A, b: A): A
   }
@@ -106,13 +106,13 @@ object Simple extends App {
   println(s"res2 = $res2")
 
   // Implement library solutions
-    def reduceMonoid[A] (arr:Vector[A])(implicit ev:Monoid[A]):A  = arr.foldLeft(ev.empty)(ev.combine)
+  def reduceMonoid[A] (arr:Vector[A])(implicit ev:Monoid[A]):A  = arr.foldLeft(ev.empty)(ev.combine)
 
-    val res3  = reduceMonoid(aInt)
-    val res4  = reduceMonoid(aStr)
-    
-    println (s"res3 = $res3")
-    println (s"res4 = $res4")
+  val res3  = reduceMonoid(aInt)
+  val res4  = reduceMonoid(aStr)
+  
+  println (s"res3 = $res3")
+  println (s"res4 = $res4")
 
 }
 
